@@ -1345,8 +1345,8 @@ const Body = () => {
         <h5>Search</h5>
       </div>
       <div className="res-container">
-        {resObj.map((restaurant) => (
-          <RestaurantCard resData={restaurant} />
+        {resObj.map((restaurant, index) => (
+          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
     </div>
