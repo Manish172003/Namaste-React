@@ -1,4 +1,4 @@
-export const resObj = [
+export const resObj2 = [
   {
     info: {
       id: "85973",
