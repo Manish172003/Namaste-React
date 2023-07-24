@@ -1,6 +1,7 @@
+import { useParams, Link } from "react-router-dom";
+
 const RestaurantCard = (props) => {
   const { resData } = props;
-
   return (
     <div className="res-card">
       <img
@@ -15,6 +16,12 @@ const RestaurantCard = (props) => {
       <h4>{resData.info.avgRating}</h4>
       <h4>{resData.info.sla.slaString}</h4>
       <h4>{resData.info.costForTwo}</h4>
+      <h4>
+        <Link to={`/viewres/${1}`} className="btn btn-outinle-success">
+          {" "}
+          Order Now
+        </Link>
+      </h4>
     </div>
   );
 };

@@ -1,7 +1,9 @@
+// import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="navbar">
+    <div className={`navbar-light`}>
       <div className="nav-images">
         <img
           className="nav-logo"
@@ -10,9 +12,15 @@ const Header = () => {
       </div>
       <div className="items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact us</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
           <li>Cart</li>
         </ul>
       </div>

@@ -23,15 +23,18 @@
   },
   "homepage": "https://github.com/Manish172003/Namaste-React#readme",
   "devDependencies": {
+    "buffer": "^5.7.1",
     "parcel": "^2.8.3",
     "process": "^0.11.10"
   },
   "dependencies": {
+    "axios": "^1.4.0",
+    "bootstrap": "^5.3.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2"
   },
-
-  "browserslist":[
+  "browserslist": [
     "last 2 versions"
   ]
 }
