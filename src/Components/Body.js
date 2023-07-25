@@ -6,38 +6,47 @@ import Shimer from "../Components/Shimer";
 
 import { useEffect, useState } from "react";
 
+import { Link } from "react-router-dom";
+
 const Body = () => {
-  const [resObj, setresObj] = useState([]);
+  const [resObj, setresObj] = useState(null);
 
   const [searchText, setSearchText] = useState("");
 
-  const [filteredlist, setFilteredList] = useState([]);
+  const [filteredlist, setFilteredList] = useState(null);
 
   useEffect(() => {
+    console.log("Iam use Effect");
     fetchData();
   }, []);
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.2893144&lng=80.4604643&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.2893144&lng=80.4604643&is-seo-homepage-enabled=true"
     );
 
     const json = await data.json();
 
+    console.log(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle.restaurants
+    );
+
     setresObj(
-      json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle.restaurants
     );
 
     setFilteredList(
-      json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle.restaurants
     );
-
-    console.log(
-      json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
-    );
+    
   };
-
-  return (resObj.length === 0 ) ? ( <Shimer/> ) : (
+  
+  if(resObj === null)
+  {
+    return <Shimer/>
+  }
+ 
+  return (
     <div className="body">
       <div className="filter">
         <input
@@ -50,8 +59,8 @@ const Body = () => {
         ></input>
         <button
           onClick={() => {
-            const filteredlist1 = resObj.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase())
+            const filteredlist1 = resObj?.filter((res) =>
+              res?.info?.name?.toLowerCase().includes(searchText.toLowerCase())
             );
 
             setFilteredList(filteredlist1);
@@ -64,10 +73,10 @@ const Body = () => {
         {" "}
         <h5>
           <button
-            className="btn-btn-danger"
+            className="btn btn-danger"
             onClick={() => {
-              const resObjdummy = resObj.filter(
-                (res) => res.info.avgRating > 3.8
+              const resObjdummy = resObj?.filter(
+                (res) => res?.info?.avgRating > 3.8
               );
 
               setFilteredList(resObjdummy);
@@ -78,10 +87,14 @@ const Body = () => {
         </h5>
       </div>
       <div className="res-container">
-        {filteredlist?.map((restaurant, index) => (
-          <RestaurantCard key={index} resData={restaurant} />
+        {filteredlist?.map((restaurant) => (
+          <Link key={restaurant.info.id} to={"/viewres/" + restaurant.info.id}>
+            {" "}
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
+      {console.log("I am Use state")}
     </div>
   );
 };

@@ -17,7 +17,10 @@ const RestaurantCard = (props) => {
       <h4>{resData.info.sla.slaString}</h4>
       <h4>{resData.info.costForTwo}</h4>
       <h4>
-        <Link to={`/viewres/${1}`} className="btn btn-outinle-success">
+        <Link
+          to={`/viewres/${resData.info.id}`}
+          className="btn btn-outinle-success"
+        >
           {" "}
           Order Now
         </Link>
