@@ -38,7 +38,7 @@ const ViewRes = () => {
 
   // console.log(itemCards);
 
-  const categories = res.cards[3].groupedCard.cardGroupMap.REGULAR.cards.filter(
+  const categories = res?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
     c => c?.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
   console.log(categories);
