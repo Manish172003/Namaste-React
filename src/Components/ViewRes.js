@@ -8,7 +8,7 @@ const ViewRes = () => {
 
   useEffect(() => {
     loadMenu();
-  },[]);
+  }, []);
 
   const loadMenu = async () => {
     const data = await fetch(
@@ -19,38 +19,45 @@ const ViewRes = () => {
 
     const json = await data.json();
     setRes(json.data);
-
   };
 
   if (res === null) {
     return <Shimer />;
   }
 
-  console.log(res.cards)
+  // console.log(res.cards[3].groupedCard.cardGroupMap.REGULAR);
 
-  const {name} =
+  const { name } =
     res?.cards[0]?.card?.card?.info ||
     res?.cards[1]?.card?.card?.info ||
-    res?.cards[2]?.card?.card?.info; 
- 
+    res?.cards[2]?.card?.card?.info;
+
   const { itemCards } =
     res?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card ||
     res?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
   // console.log(itemCards);
 
+  const categories = res.cards[3].groupedCard.cardGroupMap.REGULAR.cards.filter(
+    c => c?.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+  console.log(categories);
+
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <h2>Menu</h2>
-      <ul>
-        {itemCards?.map((item, index) => (
-          <li key={item?.card?.info?.id}>
-            {item?.card?.info?.name} - {" Rs "} {item?.card?.info?.price / 100}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div className="menu">
+        <h1>{name}</h1>
+        <h2>Menu</h2>
+        <ul>
+          {itemCards?.map((item, index) => (
+            <li key={item?.card?.info?.id}>
+              {item?.card?.info?.name} - {" Rs "}{" "}
+              {item?.card?.info?.price / 100}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 

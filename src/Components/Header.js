@@ -1,27 +1,24 @@
 // import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import img from "./preview.png";
 const Header = () => {
   return (
-    <div className={`navbar-light`}>
-      <div className="nav-images">
-        <img
-          className="nav-logo"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTKo8o3HS6bE5Sy-XvlpIX5xY2kmprIeefIQ&usqp=CAU"
-        />
+    <div className="flex justify-around bg-blue-100 shadow-lg">
+      <div>
+        <img className="w-20 ml-2" src={img} />
       </div>
-      <div className="items">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
+      <div className="flex items-center ">
+        <ul className="flex">
+          <li className="px-4">
+            <Link to="/">🏠Home</Link>
           </li>
-          <li>
-            <Link to="/about">About Us</Link>
+          <li className="px-4">
+            <Link to="/about">✊About Us</Link>
           </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
+          <li className="px-4">
+            <Link to="/contact">📞Contact Us</Link>
           </li>
-          <li>Cart</li>
+          <li className="px-4">🛒Cart</li>
         </ul>
       </div>
     </div>

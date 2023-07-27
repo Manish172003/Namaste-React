@@ -13,4 +13,18 @@ https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&la
 // updated api
 
 https://www.swiggy.com/mapi/homepage/getCards?lat=16.2893144&lng=80.4604643
-Praveen - Sort Restaurants based on food name
+
+// Interesting Observations
+ setresObj(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        .restaurants ||
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants
+    );
+
+    setFilteredList(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        .restaurants ||
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants
+    );

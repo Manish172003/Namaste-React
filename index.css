@@ -1,73 +1,6 @@
-.navbar-light {
-  height: 100px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border: 2px solid black;
-}
-.items > ul {
-  display: flex;
-  gap: 3rem;
-}
-.items > ul > li {
-  color: black;
-  list-style-type: none;
-  font-size: 1rem;
-}
-
-.nav-logo {
-  width: 80px;
-  height: 65px;
-}
-
-.res-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.search {
-  margin: 10px 0;
-  height: 1.5rem;
-  background-color: white;
-  color: black;
-  text-align: end;
-  border: 2px solid black;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.res-card {
-  width: 150px;
-  background: white;
-  /* border: 1px solid black; */
-  /* border: 1px solid gray; */
-  padding: 15px;
-  margin: 20px;
-}
-
-.res-logo:hover {
-  box-shadow: 5px 5px 20px grey;
-}
-
-.res-card:hover {
-  border: 1px solid gray;
-  /* box-shadow: inset; */
-  /* box-shadow: 5px 5px gray; */
-  box-shadow: 5px 5px 20px grey;
-  cursor: pointer;
-}
-
-.res-card > h3 {
-  font-size: small;
-}
-.res-card > h4 {
-  font-size: small;
-}
-.res-logo {
-  width: 100%;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .shimer-container {
   display: flex;
@@ -83,32 +16,4 @@
   /* border: 1px solid gray; */
   padding: 15px;
   margin: 20px;
-}
-
-.filter {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 10px 0;
-  height: 1.5rem;
-  background-color: white;
-  color: black;
-  text-align: end;
-  border: 2px solid black;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.filter-input {
-  width: 300px;
-}
-
-.navbar-dark {
-  height: 100px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: white;
-  border: 2px solid black;
-  background-color: black;
 }

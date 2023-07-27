@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 const RestaurantCard = (props) => {
   const { resData } = props;
   return (
-    <div className="res-card">
+    <div className="w-[250px] h-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <img
         className="res-logo"
         src={
@@ -11,16 +11,14 @@ const RestaurantCard = (props) => {
           resData.info.cloudinaryImageId
         }
       />
-      <h3>{resData.info.name}</h3>
-      <h4>{resData.info.cuisines.join(", ")}</h4>
-      <h4>{resData.info.avgRating}</h4>
-      <h4>{resData.info.sla.slaString}</h4>
-      <h4>{resData.info.costForTwo}</h4>
+
+      <h3 className="font-bold p-1">{resData.info.name}</h3>
+      <h4 className="p-1">{resData.info.cuisines.join(", ")}</h4>
+      <h4 className="p-1">{resData.info.avgRating + "⭐"}</h4>
+      <h4 className="p-1">{resData.info.sla.slaString}</h4>
+      <h4 className="p-1">{resData.info.costForTwo}</h4>
       <h4>
-        <Link
-          to={`/viewres/${resData.info.id}`}
-          className="btn btn-outinle-success"
-        >
+        <Link to={`/viewres/${resData.info.id}`} className="p-1 bg-green-200">
           {" "}
           Order Now
         </Link>

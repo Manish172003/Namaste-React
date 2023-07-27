@@ -27,66 +27,80 @@ const Body = () => {
 
     const json = await data.json();
 
-    console.log(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle.restaurants
-    );
-
     setresObj(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        .restaurants ||
+        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants ||
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants ||
+        json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants
     );
 
     setFilteredList(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        .restaurants ||
+        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants ||
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants ||
+        json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants
     );
-    
   };
-  
-  if(resObj === null)
-  {
-    return <Shimer/>
+
+  if (resObj === null) {
+    return <Shimer />;
   }
- 
+
   return (
     <div className="body">
-      <div className="filter">
-        <input
-          className="filter-input"
-          type="text"
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        ></input>
-        <button
-          onClick={() => {
-            const filteredlist1 = resObj?.filter((res) =>
-              res?.info?.name?.toLowerCase().includes(searchText.toLowerCase())
-            );
-
-            setFilteredList(filteredlist1);
-          }}
-        >
-          Search
-        </button>
-      </div>
-      <div className="search">
-        {" "}
-        <h5>
+      <div className="flex justify-center ">
+        <div className="m-4 ">
+          <input
+            className="border border-solid border-gray-600"
+            placeholder=" Favourite restaurants 🔍"
+            type="text"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          ></input>
           <button
-            className="btn btn-danger"
+            className="px-4 bg-green-100"
             onClick={() => {
-              const resObjdummy = resObj?.filter(
-                (res) => res?.info?.avgRating > 3.8
+              const filteredlist1 = resObj?.filter((res) =>
+                res?.info?.name
+                  ?.toLowerCase()
+                  .includes(searchText.toLowerCase())
               );
 
-              setFilteredList(resObjdummy);
+              setFilteredList(filteredlist1);
             }}
           >
-            Top Rated
+            Search
           </button>
-        </h5>
+        </div>
+        <div className="m-4">
+          {" "}
+          <h5>
+            <button
+              className="px-4 bg-green-100"
+              onClick={() => {
+                const resObjdummy = resObj?.filter(
+                  (res) => res?.info?.avgRating > 3.8
+                );
+
+                setFilteredList(resObjdummy);
+              }}
+            >
+              Top Rated
+            </button>
+          </h5>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap justify-center ">
         {filteredlist?.map((restaurant) => (
           <Link key={restaurant.info.id} to={"/viewres/" + restaurant.info.id}>
             {" "}
